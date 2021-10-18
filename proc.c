@@ -539,7 +539,7 @@ ps(int pid)
   struct proc *p;
 
   acquire(&ptable.lock);
-  cprintf("pid \t ppid \t \t state \t name");
+  cprintf("pid \t ppid \t state \t name");
   for(p=ptable.proc;p<&ptable.proc[NPROC];p++){
     if(p->state==SLEEPING){
       cprintf("%d \t %d \t SLEEPING \t %s",p->pid,p->parent,p->name);
