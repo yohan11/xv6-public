@@ -6,7 +6,7 @@
 int 
 main(int argc, char *argv[])
 {
-  ps();
+  ps(getpid());
 
   exit();
 }
