@@ -533,13 +533,13 @@ procdump(void)
   }
 }
 
-void
-ps(int pid)
+int
+cps()
 {
   struct proc *p;
 
   acquire(&ptable.lock);
-  cprintf("pid \t ppid \t state \t name");
+  cprintf("pid \t ppid \t state \t name \n");
   for(p=ptable.proc;p<&ptable.proc[NPROC];p++){
     if(p->state==SLEEPING){
       cprintf("%d \t %d \t SLEEPING \t %s",p->pid,p->parent,p->name);
@@ -548,5 +548,12 @@ ps(int pid)
       cprintf("%d \t %d \t RUNNING \t %s",p->pid,p->parent,p->name);
 
     }
+     else if(p->state==RUNNABLE){
+      cprintf("%d \t %d \t RUNNABLE \t %s",p->pid,p->parent,p->name);
+
+    }
   }
+  release(&ptable.lock);
+
+  return 22;
 }
