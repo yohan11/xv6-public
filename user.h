@@ -24,6 +24,7 @@ char* sbrk(int);
 int sleep(int);
 int uptime(void);
 int cps(void);
+int symlink(const char*, const char*);
 
 // ulib.c
 int stat(const char*, struct stat*);
